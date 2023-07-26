@@ -1,0 +1,142 @@
+{
+  "adom": "root",
+  "variables": [
+    {
+      "name": "city",
+      "mapping": [
+        {
+          "device": "Nashville_Spoke_01",
+          "vdom": "root",
+          "value": "Nashville"
+        }
+      ]
+    },
+    {
+      "name": "inet1_int",
+      "value": "port8"
+    },
+    {
+      "name": "inet1_ip",
+      "mapping": [
+        {
+          "device": "Nashville_Spoke_01",
+          "vdom": "root",
+          "value": "172.16.1.17"
+        }
+      ],
+      "value": "169.254.170.254"
+    },
+    {
+      "name": "inet1_net",
+      "mapping": [
+        {
+          "device": "Nashville_Spoke_01",
+          "vdom": "root",
+          "value": "255.255.255.252"
+        }
+      ],
+      "value": "255.255.255.0"
+    },
+    {
+      "name": "inet1_gw",
+      "mapping": [
+        {
+          "device": "Nashville_Spoke_01",
+          "vdom": "root",
+          "value": "172.16.1.18"
+        }
+      ],
+      "value": "169.254.170.1"
+    },
+    {
+      "name": "inet2_int",
+      "value": "port9"
+    },
+    {
+      "name": "inet2_ip",
+      "value": "169.254.169.254"
+    },
+    {
+      "name": "inet2_net",
+      "value": "255.255.255.0"
+    },
+    {
+      "name": "inet2_gw",
+      "value": "169.254.169.1"
+    },
+    {
+      "name": "mpls_int",
+      "value": "port10"
+    },
+    {
+      "name": "mpls_ip",
+      "mapping": [
+        {
+          "device": "Nashville_Spoke_01",
+          "vdom": "root",
+          "value": "172.16.3.17"
+        }
+      ],
+      "value": "169.254.171.254"
+    },
+    {
+      "name": "mpls_net",
+      "mapping": [
+        {
+          "device": "Nashville_Spoke_01",
+          "vdom": "root",
+          "value": "255.255.255.252"
+        }
+      ],
+      "value": "255.255.255.0"
+    },
+    {
+      "name": "mpls_gw",
+      "mapping": [
+        {
+          "device": "Nashville_Spoke_01",
+          "vdom": "root",
+          "value": "172.16.3.18"
+        }
+      ],
+      "value": "169.254.171.1"
+    },
+    {
+      "name": "branch_id",
+      "mapping": [
+        {
+          "device": "Nashville_Spoke_01",
+          "vdom": "root",
+          "value": "11"
+        }
+      ]
+    },
+    {
+      "name": "lan_spoke_network",
+      "mapping": [
+        {
+          "device": "Nashville_Spoke_01",
+          "vdom": "root",
+          "value": "10.20.31.0/24"
+        }
+      ],
+      "value": "169.254.250.69/32"
+    },
+    {
+      "name": "hub1_inet",
+      "value": "172.16.1.5"
+    },
+    {
+      "name": "hub2_inet",
+      "value": "172.16.1.1"
+    },
+    {
+      "name": "hub1_mpls",
+      "value": "172.16.3.5"
+    },
+    {
+      "name": "hub2_mpls",
+      "value": "172.16.3.1"
+    }
+  ]
+}
