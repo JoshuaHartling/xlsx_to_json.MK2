@@ -1,0 +1,59 @@
+{
+  "adom": "root",
+  "variables": [
+    {
+      "name": "INET1"
+    },
+    {
+      "name": "INET1_GW"
+    },
+    {
+      "name": "INET1_IP"
+    },
+    {
+      "name": "INET1_netmask"
+    },
+    {
+      "name": "INET2"
+    },
+    {
+      "name": "INET2_GW",
+      "mapping": [
+        {
+          "device": "PLT-FTG-1",
+          "vdom": "root",
+          "value": "100.62.16.297"
+        }
+      ]
+    },
+    {
+      "name": "INET2_IP"
+    },
+    {
+      "name": "INET2_netmask"
+    },
+    {
+      "name": "LAN_INTF"
+    },
+    {
+      "name": "LAN_IP",
+      "value": "0.0.0.0",
+      "mapping": [
+        {
+          "device": "PLT-FTG-1",
+          "vdom": "root",
+          "value": "100.23.15.316"
+        }
+      ]
+    },
+    {
+      "name": "LAN_netmask",
+      "value": "0.0.0.0"
+    },
+    {
+      "name": "vm_interface_number",
+      "description": "predefined variable for set fgtvm interface number",
+      "value": "1"
+    }
+  ]
+}
