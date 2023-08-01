@@ -2,17 +2,14 @@
 from openpyxl import load_workbook
 import json
 
-
 # global constants - do not change!
 HOSTNAME = "hostname"
-
 
 # User input
 # # select ADOM
 adom = 'root'  # name of adom; if ADOM's are not in use, specify 'root'
 
 # # specify filepath to metavariable Excel file
-file_path = "example.xlsx"
 # file_path = "path/to/your/file"
 
 # # specify which sheet to use
@@ -67,12 +64,15 @@ if active_sheet is None:
 else:
     worksheet = workbook[active_sheet]
 
+# # define skipable values
+skipable = [None, '', 'N/A']
+
 # # create a list to hold variable values
 variables = []
 
 # # define data for each variable
 for column in worksheet.iter_cols(min_col=3):
-    if column[0].value is not None:
+    if column[0].value not in skipable:
         # define variable inner-dictionary
         variable = {
             "name": column[0].value
@@ -94,20 +94,18 @@ for column in worksheet.iter_cols(min_col=3):
         # fill in variable dictionary
         if mapping:  # if there are device mappings to be had, add them to the variable dictionary
             variable["mapping"] = mapping
-        if global_value is not None and update_defaults:  # if a global value is present and the update boolean is set, include a global value
+        if global_value not in skipable and update_defaults:  # if a global value is present and the update boolean is set, include a global value
             variable["value"] = global_value
         if "value" in variable or "mapping" in variable:  # if a variable has data, add it to the template
             variables.append(variable)
 
 # # Create an outer-dictionary to hold metadata object
-metadata = { "adom": adom, "variables": variables }
-
+metadata = {"adom": adom, "variables": variables}
 
 # Convert to JSON
 json_str = json.dumps(metadata, indent=2)
 print(json_str)
 
-
 # Save output to file 'example_output.json'
-with open('example_output.json', 'w') as f:
+with open('output.json', 'w') as f:
     f.write(json_str)
