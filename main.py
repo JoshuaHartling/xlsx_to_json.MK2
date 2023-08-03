@@ -10,7 +10,8 @@ HOSTNAME = "hostname"
 adom = 'root'  # name of adom; if ADOM's are not in use, specify 'root'
 
 # # specify filepath to metavariable Excel file
-# file_path = "path/to/your/file"
+# file_path = "example.xlsx"
+file_path = "path/to/your/file"
 
 # # specify which sheet to use
 # active_sheet = "metavariables"  # name of the sheet containing metavariables
@@ -84,7 +85,7 @@ for column in worksheet.iter_cols(min_col=3):
         for cell in column[2:]:
             host = worksheet['A' + str(cell.row)].value
             vdom = worksheet['B' + str(cell.row)].value
-            if cell.value is not None and device_filter(host):
+            if cell.value not in skipable and device_filter(host):
                 mapping.append({
                     "device": host,
                     "vdom": vdom,
