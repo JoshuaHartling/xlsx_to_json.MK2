@@ -134,6 +134,6 @@ metadata = {"adom": adom, "variables": variables}
 json_str = json.dumps(metadata, indent=2)
 print(json_str)
 
-# Save output to file 'example_output.json'
+# Save output to file 'output.json'
 with open('output.json', 'w') as f:
     f.write(json_str)
