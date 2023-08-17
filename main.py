@@ -1,9 +1,11 @@
 # import statements
 from openpyxl import load_workbook
+from openpyxl.utils import get_column_letter
 import json
 
-# global constants - do not change!
+# global constants
 HOSTNAME = "hostname"
+VDOM = "vdom"
 
 # User input
 # # select ADOM
@@ -40,19 +42,16 @@ def device_filter(device):
     elif isinstance(device_list, list):
         local_filter = device_list
     else:
+        local_filter = None
         print("Error: 'device_list' needs to be either a string or a list.")
         quit(1)
     # filter devices
-    if negate:
-        if device in local_filter:
-            return False
-        else:
-            return True
+    if device in local_filter:
+        result = True
     else:
-        if device in local_filter:
-            return True
-        else:
-            return False
+        result = False
+    # return result
+    return result if negate is False else not result
 
 
 # Extract data from Excel file into dictionary object
@@ -68,11 +67,39 @@ else:
 # # define skipable values
 skipable = [None, '', 'N/A']
 
+# # set host/vdom columns and check for duplicate entries
+duplicate_check = []
+host_column = None
+vdom_column = None
+for column in worksheet.iter_cols():
+    # assign friendly names
+    header = column[0].value
+    current_column = column[0].column
+    # check for hostname column
+    if header == HOSTNAME:
+        host_column = current_column
+    # check for vdom column
+    if header == VDOM:
+        vdom_column = current_column
+    # add value to duplicate_check list
+    if header not in skipable:
+        if header in duplicate_check:
+            print(f"Error: variable \"{header}\" is duplicated at column {get_column_letter(current_column)}.")
+            quit(2)
+        duplicate_check.append(header)
+if host_column is None:
+    print(f"Error: {HOSTNAME} column is not present.")
+    quit(101)
+if vdom_column is None:
+    print(f"Error: {VDOM} column is not present.")
+    quit(102)
+start_column = max([host_column, vdom_column]) + 1
+
 # # create a list to hold variable values
 variables = []
 
 # # define data for each variable
-for column in worksheet.iter_cols(min_col=3):
+for column in worksheet.iter_cols(min_col=start_column):
     if column[0].value not in skipable:
         # define variable inner-dictionary
         variable = {
@@ -83,8 +110,8 @@ for column in worksheet.iter_cols(min_col=3):
 
         # define mapping for each variable
         for cell in column[2:]:
-            host = worksheet['A' + str(cell.row)].value
-            vdom = worksheet['B' + str(cell.row)].value
+            host = worksheet[get_column_letter(host_column) + str(cell.row)].value
+            vdom = worksheet[get_column_letter(vdom_column) + str(cell.row)].value
             if cell.value not in skipable and device_filter(host):
                 mapping.append({
                     "device": host,
