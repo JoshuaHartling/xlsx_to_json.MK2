@@ -113,11 +113,13 @@ for column in worksheet.iter_cols(min_col=start_column):
             host = worksheet[get_column_letter(host_column) + str(cell.row)].value
             vdom = worksheet[get_column_letter(vdom_column) + str(cell.row)].value
             if cell.value not in skipable and device_filter(host):
-                mapping.append({
+                device_settings = {
                     "device": host,
-                    "vdom": vdom,
                     "value": cell.value
-                })
+                }
+                if vdom not in skipable and vdom != "global":
+                    device_settings["vdom"] = vdom
+                mapping.append(device_settings)
 
         # fill in variable dictionary
         if mapping:  # if there are device mappings to be had, add them to the variable dictionary
