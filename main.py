@@ -1,34 +1,12 @@
 # import statements
 from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
+from user_settings import *
 import json
 
 # global constants
 HOSTNAME = "hostname"
 VDOM = "vdom"
-
-# User input
-# # select ADOM
-adom = 'root'  # name of adom; if ADOM's are not in use, specify 'root'
-
-# # specify filepath to metavariable Excel file
-# file_path = "example.xlsx"
-file_path = "path/to/your/file"
-
-# # specify which sheet to use
-# active_sheet = "metavariables"  # name of the sheet containing metavariables
-active_sheet = None  # specify None to use the active (usually first) sheet of the Excel file
-
-# # select devices - select the devices to create scripts for
-# device_list = "Nashville_Spoke_01"  # create a script for just this device
-# device_list = ["Nashville_Spoke_01", "LasVegas_Spoke_02"]  # create a script for any device with the hostname in list
-device_list = None  # create a script for all devices
-
-# # select negation
-negate = False  # set to true if you wish to create a script for every device except the one(s) listed in devices
-
-# # update default values
-update_defaults = True  # if true, values will be extracted from the global row as default values (if value is defined)
 
 
 # function for filter logic
