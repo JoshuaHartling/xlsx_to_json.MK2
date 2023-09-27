@@ -1,35 +1,10 @@
 # import statements
 from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
+from utilities import device_filter
+from constants import *
 from user_settings import *
 import json
-
-# global constants
-HOSTNAME = "hostname"
-VDOM = "vdom"
-
-
-# function for filter logic
-def device_filter(device):
-    # if filter is not set, always return true
-    if device_list is None:
-        return True
-    # if device_list is a string, turn it into list
-    if isinstance(device_list, str):
-        local_filter = [device_list]
-    elif isinstance(device_list, list):
-        local_filter = device_list
-    else:
-        local_filter = None
-        print("Error: 'device_list' needs to be either a string or a list.")
-        quit(1)
-    # filter devices
-    if device in local_filter:
-        result = True
-    else:
-        result = False
-    # return result
-    return result if negate is False else not result
 
 
 # Extract data from Excel file into dictionary object
@@ -41,9 +16,6 @@ if active_sheet is None:
     worksheet = workbook.active
 else:
     worksheet = workbook[active_sheet]
-
-# # define skipable values
-skipable = [None, '', 'N/A']
 
 # # set host/vdom columns and check for duplicate entries
 duplicate_check = []
@@ -81,7 +53,7 @@ for column in worksheet.iter_cols(min_col=start_column):
     if column[0].value not in skipable:
         # define variable inner-dictionary
         variable = {
-            "name": column[0].value
+            NAME: column[0].value
         }
         global_value = column[1].value
         mapping = []
@@ -92,19 +64,19 @@ for column in worksheet.iter_cols(min_col=start_column):
             vdom = worksheet[get_column_letter(vdom_column) + str(cell.row)].value
             if cell.value not in skipable and device_filter(host):
                 device_settings = {
-                    "device": host,
-                    "value": cell.value
+                    DEVICE: host,
+                    VALUE: cell.value
                 }
-                if vdom not in skipable and vdom != "global":
-                    device_settings["vdom"] = vdom
+                if vdom not in skipable and vdom != GLOBAL:
+                    device_settings[VIRTUAL_DOMAIN] = vdom
                 mapping.append(device_settings)
 
         # fill in variable dictionary
         if mapping:  # if there are device mappings to be had, add them to the variable dictionary
-            variable["mapping"] = mapping
+            variable[MAPPING] = mapping
         if global_value not in skipable and update_defaults:  # if a global value is present and the update boolean is set, include a global value
-            variable["value"] = global_value
-        if "value" in variable or "mapping" in variable:  # if a variable has data, add it to the template
+            variable[VALUE] = global_value
+        if VALUE in variable or MAPPING in variable:  # if a variable has data, add it to the template
             variables.append(variable)
 
 # # Create an outer-dictionary to hold metadata object
@@ -115,5 +87,5 @@ json_str = json.dumps(metadata, indent=2)
 print(json_str)
 
 # Save output to file 'output.json'
-with open('output.json', 'w') as f:
+with open(json_output_file, 'w') as f:
     f.write(json_str)

@@ -30,6 +30,8 @@ data to be in.  It was pulled directly from FortiManager v7.2.3.
 * *user_settings.py* contains user configuration parameters.
 * *main.py* is the main script that should be run to convert your Excel file into the 
 properly formatted JSON.
+* *main-json2xlsx.py* is a script to update an Excel file with a MetaVariables JSON file downloaded
+from FortiManager.
 * *example_output.json* is an example of the output of *main.py*.
 
 ## User Input
@@ -47,6 +49,14 @@ The filter can be either a string or a list.  Leave it as 'None' to not use it.
 instead of a whitelist.  All devices not included in the filter will be added to the JSON file.
 * **update_defaults:** when 'True' (default) the global values AKA default values of each variable
  will be included the JSON file.  Set to 'False' if you wish to ignore the default values.
+* **json_output_file:** the name of the JSON file that will be created when *main.py*
+is run.
+* **json_input_file:** *(only applicable to main-json2xlsx.py)* the name of the JSON file
+that will be imported when *main-json2xlsx.py* is run.
+* **add_new_vars:** *(only applicable to main-json2xlsx.py)* when this boolean is true,
+variables in the JSON file that are absent from the Excel file will be added to it.
+* **add_new_devices:** *(only applicable to main-json2xlsx.py)* when this boolean is true,
+devices in the JSON file that are absent from teh Excel file will be added to it.
 
 ## Upload to FortiManager
 To upload the JSON file to FortiManger, log into FortiManager and navigate to the appropriate ADOM
