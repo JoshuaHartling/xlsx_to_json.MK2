@@ -33,6 +33,6 @@ update_defaults = True  # if set to false, the global values row will be ignored
 json_output_file = "output.json"  # created when main.py is run
 json_input_file = "metadata_variables.json"  # imported when main-json2xlsx.py is run
 
-# # add new variable/device to excel sheet when running main-jsxon2xlsx.py
+# # add new variable/device to Excel sheet when running main-jsxon2xlsx.py
 add_new_vars = False  # set to True to add new variables to your Excel spreadsheet when converting JSON to Excel
 add_new_devices = False  # set to True to add new devices to your Excel spreadsheet when converting JSON to Excel

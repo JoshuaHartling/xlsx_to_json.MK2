@@ -65,7 +65,7 @@ for column in worksheet.iter_cols(min_col=start_column):
             if cell.value not in skipable and device_filter(host):
                 device_settings = {
                     DEVICE: host,
-                    VALUE: cell.value
+                    VALUE: str(cell.value)
                 }
                 if vdom not in skipable and vdom != GLOBAL:
                     device_settings[VIRTUAL_DOMAIN] = vdom

@@ -1,7 +1,11 @@
 # xlsx_to_json.MK2
 This project is meant to assist in uploading mass amounts of metavariable data to FortiManager v7.2
-or later.  It takes a specifically formatted Excel file and converts to a JSON file that FortiManager
-will recognize for importing Metadata.
+or later.  The "main.py" scripts takes a specifically formatted Excel file and converts it to a JSON file
+that FortiManager will recognize for importing Metadata.  Alternatively, the "main-json2xlsx.py" script
+takes a JSON file, presumably downloaded from FortiManager, and updates/creates an Excel file.
+
+Update the "user_settings.py" script with settings specific to your use case.  This is the only file
+you need to edit.
 
 
 ## Setup
@@ -30,8 +34,9 @@ data to be in.  It was pulled directly from FortiManager v7.2.3.
 * *user_settings.py* contains user configuration parameters.
 * *main.py* is the main script that should be run to convert your Excel file into the 
 properly formatted JSON.
-* *main-json2xlsx.py* is a script to update an Excel file with a MetaVariables JSON file downloaded
-from FortiManager.
+* *main-json2xlsx.py* is a script that imports a JSON file (usually downloaded from FortiManager) and
+updates your Excel file.  It also creates a backup of the current Excel file before making 
+changes to it.
 * *example_output.json* is an example of the output of *main.py*.
 
 ## User Input

@@ -2,141 +2,1049 @@
   "adom": "root",
   "variables": [
     {
-      "name": "city",
+      "name": "platform",
       "mapping": [
         {
-          "device": "Nashville_Spoke_01",
+          "device": "LAB-FTG-1",
           "vdom": "root",
-          "value": "Nashville"
+          "value": "FortiGate-70F"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "FortiGate-70F"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "FortiGate-100F"
         }
       ]
     },
     {
-      "name": "inet1_int",
-      "value": "port8"
-    },
-    {
-      "name": "inet1_ip",
+      "name": "serial_number",
       "mapping": [
         {
-          "device": "Nashville_Spoke_01",
+          "device": "LAB-FTG-1",
           "vdom": "root",
-          "value": "172.16.1.17"
+          "value": "FGT70FTK22014388"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "FGT70FTK22006079"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "FG100FTK22030771"
         }
-      ],
-      "value": "169.254.170.254"
+      ]
     },
     {
-      "name": "inet1_net",
+      "name": "blueprint",
       "mapping": [
         {
-          "device": "Nashville_Spoke_01",
+          "device": "LAB-FTG-1",
           "vdom": "root",
-          "value": "255.255.255.252"
-        }
-      ],
-      "value": "255.255.255.0"
-    },
-    {
-      "name": "inet1_gw",
-      "mapping": [
+          "value": "70F-SPOKES-2xINET"
+        },
         {
-          "device": "Nashville_Spoke_01",
+          "device": "TBR-FTG-1",
           "vdom": "root",
-          "value": "172.16.1.18"
-        }
-      ],
-      "value": "169.254.170.1"
-    },
-    {
-      "name": "inet2_int",
-      "value": "port9"
-    },
-    {
-      "name": "inet2_ip",
-      "value": "169.254.169.254"
-    },
-    {
-      "name": "inet2_net",
-      "value": "255.255.255.0"
-    },
-    {
-      "name": "inet2_gw",
-      "value": "169.254.169.1"
-    },
-    {
-      "name": "mpls_int",
-      "value": "port10"
-    },
-    {
-      "name": "mpls_ip",
-      "mapping": [
+          "value": "70F-SPOKES-2xINET_1xENS"
+        },
         {
-          "device": "Nashville_Spoke_01",
+          "device": "TST-FTG-1",
           "vdom": "root",
-          "value": "172.16.3.17"
+          "value": "100F-SPOKES-3xINET_1xENS"
         }
-      ],
-      "value": "169.254.171.254"
-    },
-    {
-      "name": "mpls_net",
-      "mapping": [
-        {
-          "device": "Nashville_Spoke_01",
-          "vdom": "root",
-          "value": "255.255.255.252"
-        }
-      ],
-      "value": "255.255.255.0"
-    },
-    {
-      "name": "mpls_gw",
-      "mapping": [
-        {
-          "device": "Nashville_Spoke_01",
-          "vdom": "root",
-          "value": "172.16.3.18"
-        }
-      ],
-      "value": "169.254.171.1"
+      ]
     },
     {
       "name": "branch_id",
       "mapping": [
         {
-          "device": "Nashville_Spoke_01",
+          "device": "LAB-FTG-1",
           "vdom": "root",
-          "value": "11"
+          "value": 11
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": 13
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": 12
         }
       ]
     },
     {
-      "name": "lan_spoke_network",
+      "name": "ENS1",
       "mapping": [
         {
-          "device": "Nashville_Spoke_01",
+          "device": "TBR-FTG-1",
           "vdom": "root",
-          "value": "10.20.31.0/24"
+          "value": "internal2"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "port2"
         }
-      ],
-      "value": "169.254.250.69/32"
+      ]
     },
     {
-      "name": "hub1_inet",
-      "value": "172.16.1.5"
+      "name": "ENS_bw_up",
+      "mapping": [
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": 20000
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": 20000
+        }
+      ]
     },
     {
-      "name": "hub2_inet",
-      "value": "172.16.1.1"
+      "name": "ENS_bw_down",
+      "mapping": [
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": 20000
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": 20000
+        }
+      ]
     },
     {
-      "name": "hub1_mpls",
-      "value": "172.16.3.5"
+      "name": "INET1",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "wan1"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "wan1"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "wan1"
+        }
+      ]
     },
     {
-      "name": "hub2_mpls",
-      "value": "172.16.3.1"
+      "name": "INET1_IP",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "10.1.10.34"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "10.1.10.30"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "69.69.69.69"
+        }
+      ]
+    },
+    {
+      "name": "INET1_netmask",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.0"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.0"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.128"
+        }
+      ]
+    },
+    {
+      "name": "INET1_GW",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "10.1.10.1"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "10.1.10.1"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "69.69.69.1"
+        }
+      ]
+    },
+    {
+      "name": "INET1_bw_up",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": 5000
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": 5000
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": 5000
+        }
+      ]
+    },
+    {
+      "name": "INET1_bw_down",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": 35000
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": 35000
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": 35000
+        }
+      ]
+    },
+    {
+      "name": "INET2",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "wan2"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "internal1"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "wan2"
+        }
+      ]
+    },
+    {
+      "name": "INET2_IP",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "10.1.34.5"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "dhcp"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "42.52.62.72"
+        }
+      ]
+    },
+    {
+      "name": "INET2_netmask",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.0"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.128"
+        }
+      ]
+    },
+    {
+      "name": "INET2_GW",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "10.1.34.1"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "42.52.62.1"
+        }
+      ]
+    },
+    {
+      "name": "INET2_bw_up",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": 5000
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": 5000
+        }
+      ]
+    },
+    {
+      "name": "INET2_bw_down",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": 35000
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": 35000
+        }
+      ]
+    },
+    {
+      "name": "INET3",
+      "mapping": [
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "port1"
+        }
+      ]
+    },
+    {
+      "name": "INET3_IP",
+      "mapping": [
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "10.20.30.40"
+        }
+      ]
+    },
+    {
+      "name": "INET3_netmask",
+      "mapping": [
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.128"
+        }
+      ]
+    },
+    {
+      "name": "INET3_GW",
+      "mapping": [
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "10.20.30.1"
+        }
+      ]
+    },
+    {
+      "name": "INET3_bw_up",
+      "mapping": [
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": 5000
+        }
+      ]
+    },
+    {
+      "name": "INET3_bw_down",
+      "mapping": [
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": 35000
+        }
+      ]
+    },
+    {
+      "name": "lan_summary",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "10.130.32.0/20"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "10.140.128.0/20"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "10.42.0.0/20"
+        }
+      ]
+    },
+    {
+      "name": "LAN_INTF",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "internal3"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "internal3"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "port3"
+        }
+      ]
+    },
+    {
+      "name": "LAN_IP",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "N/A"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "N/A"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "N/A"
+        }
+      ]
+    },
+    {
+      "name": "LAN_netmask",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "N/A"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "N/A"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "N/A"
+        }
+      ]
+    },
+    {
+      "name": "atm_ip",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "10.130.34.1"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "10.140.131.1"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "10.42.2.1"
+        }
+      ]
+    },
+    {
+      "name": "atm_netmask",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.240"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.240"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.240"
+        }
+      ]
+    },
+    {
+      "name": "atm_ip_legacy",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "N/A"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "172.19.30.1"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "N/A"
+        }
+      ]
+    },
+    {
+      "name": "atm_netmask_legacy",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "N/A"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.128"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "N/A"
+        }
+      ]
+    },
+    {
+      "name": "data_ip_legacy",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "N/A"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "172.18.30.1"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "N/A"
+        }
+      ]
+    },
+    {
+      "name": "data_netmask_legacy",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "N/A"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.128"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "N/A"
+        }
+      ]
+    },
+    {
+      "name": "hvac_ip",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "10.130.35.1"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "10.140.131.1"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "10.42.3.1"
+        }
+      ]
+    },
+    {
+      "name": "hvac_netmask",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.240"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.240"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.240"
+        }
+      ]
+    },
+    {
+      "name": "localisp_ip",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "10.130.40.1"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "10.140.136.1"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "10.42.8.1"
+        }
+      ]
+    },
+    {
+      "name": "localisp_netmask",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.240"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.240"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.240"
+        }
+      ]
+    },
+    {
+      "name": "localisp_dhcp_start",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "10.130.40.2"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "10.140.136.2"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "10.42.8.2"
+        }
+      ]
+    },
+    {
+      "name": "localisp_dhcp_end",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "10.130.40.14"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "10.140.136.14"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "10.42.8.14"
+        }
+      ]
+    },
+    {
+      "name": "management_ip",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "10.130.32.1"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "10.140.128.1"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "10.42.0.1"
+        }
+      ]
+    },
+    {
+      "name": "management_netmask",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.240"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.248"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.240"
+        }
+      ]
+    },
+    {
+      "name": "management_ip_legacy",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "N/A"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "172.22.30.1"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "N/A"
+        }
+      ]
+    },
+    {
+      "name": "management_netmask_legacy",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "N/A"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.128"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "N/A"
+        }
+      ]
+    },
+    {
+      "name": "physec_ip",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "10.130.36.1"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "10.140.132.1"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "10.42.4.1"
+        }
+      ]
+    },
+    {
+      "name": "physec_netmask",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.240"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.240"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.240"
+        }
+      ]
+    },
+    {
+      "name": "power_ip",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "10.130.33.1"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "10.140.129.1"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "10.42.1.1"
+        }
+      ]
+    },
+    {
+      "name": "power_netmask",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.240"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.240"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.240"
+        }
+      ]
+    },
+    {
+      "name": "voice_ip",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "10.130.39.1"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "10.140.135.1"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "10.42.7.1"
+        }
+      ]
+    },
+    {
+      "name": "voice_netmask",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.240"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.240"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.240"
+        }
+      ]
+    },
+    {
+      "name": "voice_ip_legacy",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "0.0.0.0"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "172.16.30.1"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "N/A"
+        }
+      ]
+    },
+    {
+      "name": "voice_netmask_legacy",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "0.0.0.0"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.128"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "N/A"
+        }
+      ]
+    },
+    {
+      "name": "wkstn_ip",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "10.130.37.1"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "10.140.133.1"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "10.42.5.1"
+        }
+      ]
+    },
+    {
+      "name": "wkstn_netmask",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.240"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.128"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.240"
+        }
+      ]
+    },
+    {
+      "name": "wkstndev_ip",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "10.130.38.1"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "10.140.134.1"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "10.130.36.1"
+        }
+      ]
+    },
+    {
+      "name": "wkstndev_netmask",
+      "mapping": [
+        {
+          "device": "LAB-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.240"
+        },
+        {
+          "device": "TBR-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.240"
+        },
+        {
+          "device": "TST-FTG-1",
+          "vdom": "root",
+          "value": "255.255.255.240"
+        }
+      ]
     }
   ]
 }
