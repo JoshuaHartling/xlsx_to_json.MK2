@@ -1,6 +1,6 @@
 import json
 import shutil
-from openpyxl import load_workbook
+from openpyxl import load_workbook, Workbook
 from openpyxl.utils import get_column_letter
 from openpyxl.styles import PatternFill
 from utilities import device_filter, variable_filter
@@ -13,19 +13,26 @@ with open(json_input_file, 'r') as MetaVariables_JSON:
 
 # Excel file manipulation
 # # open excel file and select sheet
-workbook = load_workbook(file_path, data_only=True)  # load file to excel
-if active_sheet is None:
+isNeedsBackup = True
+try:
+    workbook = load_workbook(file_path, data_only=True)  # load file to excel
+    if active_sheet is None:
+        worksheet = workbook.active
+    else:
+        try:
+            worksheet = workbook[active_sheet]
+        except KeyError:
+            # sheet doesn't exist, so create it
+            workbook.create_sheet(active_sheet)
+            worksheet = workbook[active_sheet]
+        except:
+            print("Error: could not open/create worksheet")
+            quit(3)
+except FileNotFoundError:
+    workbook = Workbook()
+    workbook.save(file_path)
     worksheet = workbook.active
-else:
-    try:
-        worksheet = workbook[active_sheet]
-    except KeyError:
-        # sheet doesn't exist, so create it
-        workbook.create_sheet(active_sheet)
-        worksheet = workbook[active_sheet]
-    except:
-        print("Error: could not open/create worksheet")
-        quit(3)
+    isNeedsBackup = False
 
 # check that the user has chosen the correct files
 print(f"Excel MetaVariable file: {cblu}{file_path}{cblk}")
@@ -46,25 +53,26 @@ if jsondata['adom'] != adom:
         print("SCRIPT ABORTED")
         quit(7)
 
-# create a backup of the initial excel file
-isbackupfail = False  # boolean for fail contingency
-backup_file, file_type = file_path.rsplit('.', 1)
-backup_file = f"{backup_file}-backup.{file_type}"  # name backup file
-try:
-    shutil.copy2(file_path, backup_file)  # create backup file
-except PermissionError:
-    print("ERROR: permission denied.")  # call out error if there is no permission to copy file
-    isbackupfail = True  # enable boolean for fail contingency
-except:
-    print("ERROR: could not create backup file.")  # call out general copy error
-    isbackupfail = True  # enable boolean for fail contingency
-if isbackupfail:
-    user_choice = input(
-        "Could not create backup of Excel MetaVariable file.  Are you sure you want to continue? [y/n]")  # get user input to continue
-    print('\n')
-    if user_choice not in ['y', 'Y']:
-        print("SCRIPT ABORTED")
-        quit(8)
+# create a backup of the initial excel file, if not new excel sheet
+if isNeedsBackup:
+    isbackupfail = False  # boolean for fail contingency
+    backup_file, file_type = file_path.rsplit('.', 1)
+    backup_file = f".{backup_file}-backup.{file_type}"  # name backup file
+    try:
+        shutil.copy2(file_path, backup_file)  # create backup file
+    except PermissionError:
+        print("ERROR: permission denied.")  # call out error if there is no permission to copy file
+        isbackupfail = True  # enable boolean for fail contingency
+    except:
+        print("ERROR: could not create backup file.")  # call out general copy error
+        isbackupfail = True  # enable boolean for fail contingency
+    if isbackupfail:
+        user_choice = input(
+            "Could not create backup of Excel MetaVariable file.  Are you sure you want to continue? [y/n]")  # get user input to continue
+        print('\n')
+        if user_choice not in ['y', 'Y']:
+            print("SCRIPT ABORTED")
+            quit(8)
 
 # In Excel File, set host/vdom columns and check for duplicate entries
 duplicate_check = []
@@ -135,19 +143,22 @@ for vardata in jsondata['variables']:
         worksheet.cell(row=2, column=varcolumn).value = vardata[GL_VALUE]
         worksheet.cell(row=2, column=varcolumn).fill = default_fill
     # write device specific values for variable column
-    maprow = None
     if MAPPING in vardata:  # if there is no "mapping" section for the variable, this section is moot
         for mapval in vardata[MAPPING]:
+            maprow = None
             # apply filter to device
             if not device_filter(mapval[DEVICE]):  # if device does not pass the filter, skip it
                 continue
             # search hostname column for device name, if it exists
-            for row in worksheet.iter_rows(min_row=3):
+            for row in worksheet.iter_rows(min_row=2):
                 # assign friendly names
                 header = row[host_column-1].value
+                vdom_header = row[vdom_column-1].value
                 current_row = row[host_column-1].row
-                # check if header contains variable
-                if header == mapval[DEVICE]:
+                # match device: check if mapped device name / vdom matches device in Excel
+                if vdom_header is None:  # if vdom_header is none, make it an empty string to match mapped value vdom
+                    vdom_header = ""
+                if header == mapval[DEVICE] and vdom_header == mapval[VIRTUAL_DOMAIN]:
                     maprow = current_row
                     break  # stop searching since device row has been found
             # if device is not found in hostname column...
