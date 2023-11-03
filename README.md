@@ -3,6 +3,8 @@ This project is meant to assist in uploading mass amounts of metavariable data t
 or later.  It takes a specifically formatted Excel file and converts to a JSON file that FortiManager
 will recognize for importing Metadata.
 
+Note: *FMG-xlsx_json-converter.zip* is a standalone version of this project that can be run without python.
+
 
 ## Setup
 * Download python

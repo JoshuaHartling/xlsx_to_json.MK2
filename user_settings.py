@@ -4,7 +4,8 @@ adom = 'root'  # name of adom; if ADOM's are not in use, specify 'root'
 
 # # specify filepath to MetaVariable Excel file
 # file_path = "example.xlsx"
-file_path = "path/to/your/file"
+# file_path = "path/to/your/file"
+file_path = "C:/Users/andre/Worldcom Exchange Inc/Rockland Trust - WEI - Rockland Trust - SDWAN PoC Documentation - WEI - Rockland Trust - SDWAN PoC Documentation/Trackers/metavaribles.v3.xlsx"
 
 # # specify which sheet to use
 # active_sheet = "metavariables"  # name of the sheet containing metavariables
@@ -13,7 +14,8 @@ active_sheet = None  # specify None to use the active (first) sheet of the Excel
 # # select devices - select the devices to include
 # device_list = "Nashville_Spoke_01"  # include just this device
 # device_list = ["Nashville_Spoke_01", "LasVegas_Spoke_02"]  # include any device with the hostname in list
-device_list = None  # include all devices
+# device_list = None  # include all devices
+device_list = "TBR-FTG-1"
 
 # # toggle device negation
 negate_devices = False  # set to true to include every device except the one(s) listed in the device_list
